@@ -58,23 +58,6 @@ class RecipeManager: ObservableObject {
     
     func getCurrentRecipe() -> RecipeLocal {
         
-        
-//        let recipeLocal = EntityMapper.shared.getRecipeLocalArr(recipes: [$mainViewModel.recipesLocal[currentRecipeIndex].wrappedValue])
-//
-//        for recipe in recipeLocal {
-//
-//            print("Cooking Info")
-//            print("Difficulty : \(recipe.cookingInfo.difficulty)")
-//            print("DifficultyImage : \(recipe.cookingInfo.difficultyImage)")
-//            print("Time : \(recipe.cookingInfo.time)")
-//            print("TimeImage : \(recipe.cookingInfo.timeImage)")
-//            print("Type : \(recipe.cookingInfo.type)")
-//            print("TypeImage : \(recipe.cookingInfo.typeImage)")
-//            print("IngredientsCount : \(recipe.cookingInfo.ingredientCount)")
-//            print("IngredientsCountImage : \(recipe.cookingInfo.ingredientCountImage)")
-//            
-//        }
-       
         return $mainViewModel.recipesLocal[currentRecipeIndex].wrappedValue
     }
 }

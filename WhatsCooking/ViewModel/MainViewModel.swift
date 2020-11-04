@@ -9,90 +9,177 @@ import UIKit
 import Alamofire
 import Combine
 
+
+
+//Responsible for parsing data from repository and passing it to views
+
 class MainViewModel: ObservableObject {
-    //Viewmodel will contain all transaction methods with API and CoreData
     
     @Published var recipesLocal: [RecipeLocal] = []
     @Published var loading = false
     
-    
+    private var repository = Repository()
     static var shared = MainViewModel()
 
     
     init() {
+        //populates the feeds with init
         getLatestMeals()
     }
     
-    let mealsUrl = "https://rapidapi.p.rapidapi.com/latest.php"
     
     
     
-    //completion: @escaping([Recipe]?, Error?) -> ()
+    
+    //Feeds trending meals
     func getLatestMeals(){
         print("GetLatestMeals Called")
-//        self.loading = true
 
-        
-        let parameters: Parameters = [
-            "x-rapidapi-host": "themealdb.p.rapidapi.com",
-            "x-rapidapi-key": "47f799da7amshad47aaa47be4696p1af21bjsn746d39417ee2"
-        ]
-        
-        let headers : HTTPHeaders = [
-            "x-rapidapi-host": "themealdb.p.rapidapi.com",
-            "x-rapidapi-key": "47f799da7amshad47aaa47be4696p1af21bjsn746d39417ee2"
-        ]
-        
-        AF.request(mealsUrl, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
-                switch response.result {
-                case let .success(value):
-                    //decode data
-                    
-                    guard let data = response.data else {return}
-                    
-                    do{
-                        let decodeJSON = JSONDecoder()
-                        decodeJSON.keyDecodingStrategy = .convertFromSnakeCase
-                        let result = try decodeJSON.decode(Dishes.self, from: data)
-                        
-                        
-                        self.recipesLocal = EntityMapper.shared.getRecipeLocalArr(recipes: result.meals)
-                        self.loading = true
-
-                        print("recipes in viewmodel : \(self.recipesLocal.count)")
-                        print("Request Finished : Loading Toggled : \(self.loading)")
-
-                        
-                    }catch let jsonErr{
-                        print("Json Error : \(jsonErr.localizedDescription)")
-                    }
-                    
-                                            
-                    
-                    
-                    
-                    
-                    
-                    print(value)
-                case let .failure(error):
-//                    completion(nil, error)
-                    print(error)
+        repository.fetchLatestMeals(completion: {recipesLocalApi, error in
+            
+            if let error = error {
+                //handle error
+                print(error)
             }
-        }
-    }
+            
+            if let recipesLocalApi = recipesLocalApi{
+                //handle data fetch success
+                
+                self.recipesLocal = recipesLocalApi
+                self.loading = true
+            }
+            
+        })//fetchLatestMeals
+        
+}//getLatestMeals End
+    
+    //Takes mealId and returns all details related to it
+    func getMealDetailsById(for mealId:String, completion : @escaping (RecipeLocal?, Error?)->()) -> Void {
+        print("Fetching Details For \(mealId)")
+        
+        repository.fetchMealDetailsById(for: mealId, completion: { recipeLocal, error in
+            
+            if let error = error {
+                //handle error
+                print(error)
+                completion(nil, error)
+            }
+            
+            if let recipeLocal = recipeLocal{
+                //here we have details of mealId
+//                self.recipesLocal = [recipeLocal]
+//                self.loading = true
+                completion(recipeLocal, nil)
+                print("Meal Details For \(recipeLocal.strMeal ?? "Nil")")
+                
+                
+            }
+            
+            
+            
+        })
+        
+        
+    }//getMealDetailsById End
+    
+    
+    
+    //Gets all areas available
+    func getAllAreas() -> [AreaLocal]{
+        print("Listing Areas")
+
+        return repository.fetchAllAreas()
+    }//getMealDetailsById End
+    
+    
+    //Gets all meal categories available
+    func getAllMealCategories() -> [MealCategory]{
+        print("Listing Meal Categories")
+
+        return repository.fetchAllMealCategories()
+    }//getMealDetailsById End
+    
+    
+    func searchMealsByName(query: String, completion : @escaping ([Explore]?, Error?)->()) -> Void {
+        print("SearchMealsByName Called")
+
+
+        repository.searchMealsByName(query: query, completion: {recipesLocalApi, error in
+            
+            if let error = error {
+                //handle error
+                completion(nil, error)
+                print(error)
+            }
+            
+            if let recipesLocalApi = recipesLocalApi{
+                //handle data fetch success
+                
+                let data = ExploreEntityMapper.shared.mapExploreToRecipeLocal(meals: recipesLocalApi)
+                completion(data, nil)
+                print("Request Success : Count: \(data.count)")
+            }
+            
+        })//searchMealsByName
+        
+}//searchMealsByName End
+    
+    
+    func filterMealsByArea(area: String, completion : @escaping ([FilterMeals]?, Error?)->()) -> Void {
+        print("filterMealsByArea Called")
+
+
+        repository.filterMealsByArea(area: area, completion: {filteredMeals, error in
+            
+            if let error = error {
+                //handle error
+                completion(nil, error)
+                print(error)
+            }
+            
+            if let filteredMeals = filteredMeals{
+                //handle data fetch success
+                completion(filteredMeals, nil)
+                print("Request Success : Count: \(filteredMeals.count)")
+            }
+            
+        })//searchMealsByName
+        
+}//searchMealsByName End
+    
+    
+    func filterMealsByCategory(category: String, completion : @escaping ([FilterMeals]?, Error?)->()) -> Void {
+        print("filterMealsByCategory Called")
+
+
+        repository.filterMealsByCategory(category: category, completion: {filteredMeals, error in
+            
+            if let error = error {
+                //handle error
+                completion(nil, error)
+                print(error)
+            }
+            
+            if let filteredMeals = filteredMeals{
+                //handle data fetch success
+                completion(filteredMeals, nil)
+                print("Request Success : Count: \(filteredMeals.count)")
+            }
+            
+        })//filterMealsByCategory
+        
+}//filterMealsByCategory End
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
-extension DispatchQueue {
 
-    static func background(delay: Double = 0.0, background: (()->Void)? = nil, completion: (() -> Void)? = nil) {
-        DispatchQueue.global(qos: .background).async {
-            background?()
-            if let completion = completion {
-                DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
-                    completion()
-                })
-            }
-        }
-    }
 
-}

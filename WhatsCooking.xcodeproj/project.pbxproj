@@ -8,39 +8,53 @@
 
 /* Begin PBXBuildFile section */
 		0811415B928F1025762E8DE8 /* Pods_WhatsCooking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A02C1FAA0D830A882F00CAB /* Pods_WhatsCooking.framework */; };
-		DC2B27AA254180E000DFD052 /* DataR.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B27A9254180E000DFD052 /* DataR.swift */; };
+		DC23214625472F77002BE3A7 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23214525472F77002BE3A7 /* ExploreView.swift */; };
+		DC2B27AA254180E000DFD052 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B27A9254180E000DFD052 /* RecipeModel.swift */; };
 		DC2B27B82541875A00DFD052 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B27B72541875A00DFD052 /* MainViewModel.swift */; };
+		DC638880254ABF8D00BE73D7 /* ExploreEntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC63887F254ABF8D00BE73D7 /* ExploreEntityMapper.swift */; };
+		DC63888F254AEA5100BE73D7 /* ExploreExtendedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC63888E254AEA5100BE73D7 /* ExploreExtendedView.swift */; };
+		DC7F48C025482C0B0022866A /* WhatsCooking.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC7F48BE25482C0B0022866A /* WhatsCooking.xcdatamodeld */; };
+		DC7F48E425482D160022866A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F48E325482D160022866A /* Persistence.swift */; };
+		DC855FFB25471E670069CBD2 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC855FFA25471E670069CBD2 /* Repository.swift */; };
+		DC856004254721380069CBD2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC856003254721380069CBD2 /* MainView.swift */; };
 		DC87F1AF25444CB800CC2161 /* EntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC87F1AE25444CB800CC2161 /* EntityMapper.swift */; };
 		DC8B0B2C254082880049289E /* WhatsCookingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B0B2B254082880049289E /* WhatsCookingApp.swift */; };
-		DC8B0B2E254082880049289E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B0B2D254082880049289E /* ContentView.swift */; };
+		DC8B0B2E254082880049289E /* FeedsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B0B2D254082880049289E /* FeedsView.swift */; };
 		DC8B0B30254082890049289E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC8B0B2F254082890049289E /* Assets.xcassets */; };
 		DC8B0B33254082890049289E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC8B0B32254082890049289E /* Preview Assets.xcassets */; };
-		DC8B0B402540839C0049289E /* RecipeOveriew.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B0B3F2540839C0049289E /* RecipeOveriew.swift */; };
-		DC8B0B44254083AF0049289E /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B0B43254083AF0049289E /* RecipeDetailView.swift */; };
+		DC8B0B402540839C0049289E /* FeedsOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B0B3F2540839C0049289E /* FeedsOverview.swift */; };
+		DC8B0B44254083AF0049289E /* FeedsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B0B43254083AF0049289E /* FeedsDetailView.swift */; };
 		DC8B0B47254083BF0049289E /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B0B46254083BF0049289E /* RecipeManager.swift */; };
-		DC8B0B4A254083CD0049289E /* DataOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B0B49254083CD0049289E /* DataOld.swift */; };
 		DC954CD2254329AC008A55DC /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC954CD1254329AC008A55DC /* ImageLoader.swift */; };
 		DC954CD725432EBC008A55DC /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DC954CD625432EBC008A55DC /* KingfisherSwiftUI */; };
+		DCA7DDD2254C35CD00492454 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA7DDD1254C35CD00492454 /* Tags.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6A02C1FAA0D830A882F00CAB /* Pods_WhatsCooking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatsCooking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8789CDECEF295D6A2EF88357 /* Pods-WhatsCooking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsCooking.debug.xcconfig"; path = "Target Support Files/Pods-WhatsCooking/Pods-WhatsCooking.debug.xcconfig"; sourceTree = "<group>"; };
 		D70D94825AB09348EFB7E0B4 /* Pods-WhatsCooking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsCooking.release.xcconfig"; path = "Target Support Files/Pods-WhatsCooking/Pods-WhatsCooking.release.xcconfig"; sourceTree = "<group>"; };
-		DC2B27A9254180E000DFD052 /* DataR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataR.swift; sourceTree = "<group>"; };
+		DC23214525472F77002BE3A7 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		DC2B27A9254180E000DFD052 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		DC2B27B72541875A00DFD052 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		DC63887F254ABF8D00BE73D7 /* ExploreEntityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreEntityMapper.swift; sourceTree = "<group>"; };
+		DC63888E254AEA5100BE73D7 /* ExploreExtendedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreExtendedView.swift; sourceTree = "<group>"; };
+		DC7F48BF25482C0B0022866A /* WhatsCooking.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WhatsCooking.xcdatamodel; sourceTree = "<group>"; };
+		DC7F48E325482D160022866A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		DC855FFA25471E670069CBD2 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		DC856003254721380069CBD2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DC87F1AE25444CB800CC2161 /* EntityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityMapper.swift; sourceTree = "<group>"; };
 		DC8B0B28254082880049289E /* WhatsCooking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsCooking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8B0B2B254082880049289E /* WhatsCookingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsCookingApp.swift; sourceTree = "<group>"; };
-		DC8B0B2D254082880049289E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DC8B0B2D254082880049289E /* FeedsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsView.swift; sourceTree = "<group>"; };
 		DC8B0B2F254082890049289E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC8B0B32254082890049289E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DC8B0B34254082890049289E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DC8B0B3F2540839C0049289E /* RecipeOveriew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeOveriew.swift; sourceTree = "<group>"; };
-		DC8B0B43254083AF0049289E /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
+		DC8B0B3F2540839C0049289E /* FeedsOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsOverview.swift; sourceTree = "<group>"; };
+		DC8B0B43254083AF0049289E /* FeedsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsDetailView.swift; sourceTree = "<group>"; };
 		DC8B0B46254083BF0049289E /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
-		DC8B0B49254083CD0049289E /* DataOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataOld.swift; sourceTree = "<group>"; };
 		DC954CD1254329AC008A55DC /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		DCA7DDD1254C35CD00492454 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +78,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DC570B4B254C0E77005F0EBC /* Feeds */ = {
+			isa = PBXGroup;
+			children = (
+				DC8B0B2D254082880049289E /* FeedsView.swift */,
+				DC8B0B3F2540839C0049289E /* FeedsOverview.swift */,
+				DC8B0B43254083AF0049289E /* FeedsDetailView.swift */,
+			);
+			path = Feeds;
+			sourceTree = "<group>";
+		};
+		DC570B4C254C0E82005F0EBC /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				DC23214525472F77002BE3A7 /* ExploreView.swift */,
+				DC63888E254AEA5100BE73D7 /* ExploreExtendedView.swift */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
 		DC8B0B1F254082880049289E = {
 			isa = PBXGroup;
 			children = (
@@ -85,16 +118,18 @@
 		DC8B0B2A254082880049289E /* WhatsCooking */ = {
 			isa = PBXGroup;
 			children = (
+				DC855FFA25471E670069CBD2 /* Repository.swift */,
 				DCF8F37F254172930063CF9D /* Helper */,
-				DC8B0B3E254083790049289E /* tmp */,
 				DC8B0B3D254083720049289E /* ViewModel */,
 				DC8B0B3C2540836C0049289E /* View */,
 				DC8B0B3B254083650049289E /* Model */,
+				DC856003254721380069CBD2 /* MainView.swift */,
 				DC8B0B2B254082880049289E /* WhatsCookingApp.swift */,
-				DC8B0B2D254082880049289E /* ContentView.swift */,
 				DC8B0B2F254082890049289E /* Assets.xcassets */,
 				DC8B0B34254082890049289E /* Info.plist */,
 				DC8B0B31254082890049289E /* Preview Content */,
+				DC7F48BE25482C0B0022866A /* WhatsCooking.xcdatamodeld */,
+				DC7F48E325482D160022866A /* Persistence.swift */,
 			);
 			path = WhatsCooking;
 			sourceTree = "<group>";
@@ -110,8 +145,7 @@
 		DC8B0B3B254083650049289E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DC2B27A9254180E000DFD052 /* DataR.swift */,
-				DC8B0B49254083CD0049289E /* DataOld.swift */,
+				DC2B27A9254180E000DFD052 /* RecipeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -119,6 +153,8 @@
 		DC8B0B3C2540836C0049289E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DC570B4C254C0E82005F0EBC /* Explore */,
+				DC570B4B254C0E77005F0EBC /* Feeds */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -131,21 +167,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		DC8B0B3E254083790049289E /* tmp */ = {
-			isa = PBXGroup;
-			children = (
-				DC8B0B3F2540839C0049289E /* RecipeOveriew.swift */,
-				DC8B0B43254083AF0049289E /* RecipeDetailView.swift */,
-				DC8B0B46254083BF0049289E /* RecipeManager.swift */,
-			);
-			path = tmp;
-			sourceTree = "<group>";
-		};
 		DCF8F37F254172930063CF9D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				DC954CD1254329AC008A55DC /* ImageLoader.swift */,
 				DC87F1AE25444CB800CC2161 /* EntityMapper.swift */,
+				DC8B0B46254083BF0049289E /* RecipeManager.swift */,
+				DC63887F254ABF8D00BE73D7 /* ExploreEntityMapper.swift */,
+				DCA7DDD1254C35CD00492454 /* Tags.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -278,15 +307,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC8B0B402540839C0049289E /* RecipeOveriew.swift in Sources */,
-				DC8B0B4A254083CD0049289E /* DataOld.swift in Sources */,
+				DC63888F254AEA5100BE73D7 /* ExploreExtendedView.swift in Sources */,
+				DC856004254721380069CBD2 /* MainView.swift in Sources */,
+				DC8B0B402540839C0049289E /* FeedsOverview.swift in Sources */,
 				DC8B0B47254083BF0049289E /* RecipeManager.swift in Sources */,
-				DC8B0B2E254082880049289E /* ContentView.swift in Sources */,
+				DC7F48E425482D160022866A /* Persistence.swift in Sources */,
+				DC8B0B2E254082880049289E /* FeedsView.swift in Sources */,
 				DC8B0B2C254082880049289E /* WhatsCookingApp.swift in Sources */,
+				DC23214625472F77002BE3A7 /* ExploreView.swift in Sources */,
+				DC855FFB25471E670069CBD2 /* Repository.swift in Sources */,
+				DC638880254ABF8D00BE73D7 /* ExploreEntityMapper.swift in Sources */,
 				DC954CD2254329AC008A55DC /* ImageLoader.swift in Sources */,
-				DC8B0B44254083AF0049289E /* RecipeDetailView.swift in Sources */,
-				DC2B27AA254180E000DFD052 /* DataR.swift in Sources */,
+				DC8B0B44254083AF0049289E /* FeedsDetailView.swift in Sources */,
+				DC7F48C025482C0B0022866A /* WhatsCooking.xcdatamodeld in Sources */,
+				DC2B27AA254180E000DFD052 /* RecipeModel.swift in Sources */,
 				DC2B27B82541875A00DFD052 /* MainViewModel.swift in Sources */,
+				DCA7DDD2254C35CD00492454 /* Tags.swift in Sources */,
 				DC87F1AF25444CB800CC2161 /* EntityMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,6 +533,19 @@
 			productName = KingfisherSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		DC7F48BE25482C0B0022866A /* WhatsCooking.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DC7F48BF25482C0B0022866A /* WhatsCooking.xcdatamodel */,
+			);
+			currentVersion = DC7F48BF25482C0B0022866A /* WhatsCooking.xcdatamodel */;
+			path = WhatsCooking.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DC8B0B20254082880049289E /* Project object */;
 }

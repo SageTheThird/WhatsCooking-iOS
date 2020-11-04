@@ -10,7 +10,7 @@ import KingfisherSwiftUI
 
 import SwiftUI
 
-struct RecipeOverview: View {
+struct FeedsOverview: View {
     @ObservedObject var manager: RecipeManager
     public var viewSpace: Namespace.ID
     var body: some View {
@@ -34,8 +34,6 @@ struct RecipeOverview: View {
             DescriptionView(manager: manager)
 
             Spacer()
-        }.onAppear{
-//            manager.mainViewModel.getLatestMeals()
         }
     }
 }
@@ -54,11 +52,8 @@ struct TitleView: View {
         //meal title
             Text(manager.getCurrentRecipe().strMeal ?? "Trouble Loading But We're On It")
                 .font(.system(size: 24, weight: .bold))
-//                .foregroundColor(manager.currentRecipeIndex%2 == 0 ? .black : .white)
                 .foregroundColor(.black)
-//                .transition(.opacity)
-//                .id("MyTitleComponent \(manager.getCurrentRecipe().strMeal ?? "Trouble Loading But We're On It")" )
-        
+
     }
 }
 
@@ -67,22 +62,10 @@ struct SummeryView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {//spacing between individual info
             //Summary section to the left
-//            ForEach(recipe.strMeal.sorted(by: <), id: \.key) { key, value in
-//                HStack(spacing: 12) {//horizantal spacing between info
-//                    Image(systemName: Data.summeryImageName[key] ?? "")
-//                        .foregroundColor(.green)
-//                    Text(value)
-//                }
-//            }
-            
-//            "difficulity" : "Medium",
-//            "time" : "35 min",
-//            "type" : "Fish",
-//            "ingredientCount"
             
             HStack(spacing: 12) {//horizantal spacing between info
                 Image(systemName: recipeLocal.cookingInfo.timeImage)
-                    .foregroundColor(.green)
+                    .foregroundColor(Color(.systemRed))
                 Text("\(recipeLocal.cookingInfo.time) mins")
                     .foregroundColor(.black)
             }
@@ -90,28 +73,28 @@ struct SummeryView: View {
             
             HStack(spacing: 12) {//horizantal spacing between info
                 Image(systemName: recipeLocal.cookingInfo.typeImage)
-                    .foregroundColor(.green)
+                    .foregroundColor(Color(.systemRed))
                 Text(recipeLocal.cookingInfo.type)
                     .foregroundColor(.black)
             }
             
             HStack(spacing: 12) {//horizantal spacing between info
                 Image(systemName: recipeLocal.cookingInfo.ingredientCountImage)
-                    .foregroundColor(.green)
+                    .foregroundColor(Color(.systemRed))
                 Text("\(recipeLocal.cookingInfo.ingredientCount) Ingredients")
                     .foregroundColor(.black)
             }
             
             HStack(spacing: 12) {//horizantal spacing between info
                 Image(systemName: recipeLocal.cookingInfo.difficultyImage)
-                    .foregroundColor(.green)
+                    .foregroundColor(Color(.systemRed))
                 Text(recipeLocal.cookingInfo.difficulty)
                     .foregroundColor(.black)
             }
             
             HStack(spacing: 12) {
                 Image(systemName: "chart.bar.doc.horizontal")
-                    .foregroundColor(.green)
+                    .foregroundColor(Color(.systemRed))
                 Text("Healthy")
                     .foregroundColor(.black)
             }
@@ -125,9 +108,8 @@ struct DescriptionView: View {
     var body: some View {
         HStack(spacing: 12) {
             //bottom description of recipe
-            Text("But the in-house tab bar can get boring and sometimes doesn’t offer the functionality we need for our app. In this tutorial, we will learn how to create our own fully customizable tab bar.")
+            Text("There’s cooking, and then there’s cooking with passion, creativity, and love. At What's Cooking, we firmly believe that the energy you put into a recipe is just as important as the ingredients you use. And we’re not alone.")
                 .font(.system(size: 14, weight: .semibold))
-//                .foregroundColor(manager.currentRecipeIndex%2 == 0 ? .black : .white)
                 .foregroundColor(.black)
             
             Spacer()
@@ -135,11 +117,12 @@ struct DescriptionView: View {
             Button(action: {
                 withAnimation {
                     manager.selectedRecipe = manager.getCurrentRecipe()
+                    
                 }
             }, label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.green)
+                        .fill(Color(.systemRed))
                         .frame(width: 50, height: 50)
                         .rotationEffect(.degrees(45))
                     
@@ -151,6 +134,7 @@ struct DescriptionView: View {
             
             
         }
+        .padding(.bottom, 13)
     }
 }
 
@@ -168,9 +152,7 @@ struct RecipeInteractionView: View {
                     LinearGradient(
                         gradient: Gradient(colors: [
                             Color.lightBackground.opacity(0.1),
-//                            manager.currentRecipeIndex%2 == 0 ? Color.lightBackground.opacity(0.1) : Color.darkBackground.opacity(0.1),
-//                            Color.darkBackground.opacity(0.1),
-                            Color.green, Color.green
+                            Color.red, Color.red
                         ]),
                         startPoint: .leading,
                         endPoint: .trailing),
@@ -197,7 +179,7 @@ struct RecipeInteractionView: View {
                                     Image("meal_1")
                                 }
                                 .overlay(Circle()
-                                .stroke(Color.green, lineWidth: 6))
+                                .stroke(Color(.systemRed), lineWidth: 6))
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 350, height: 350)
                                 .clipShape(Circle())
@@ -205,10 +187,7 @@ struct RecipeInteractionView: View {
                                 .matchedGeometryEffect(id: "imageId", in: viewSpace, isSource: true)
             }
             }
-//            Image(recipe.strMealThumb!)
-//                .resizable()
-//                .scaledToFit()
-//                .matchedGeometryEffect(id: "imageId", in: viewSpace, isSource: true)
+
             
             
             // this circle will be used to drag interaction
@@ -232,6 +211,7 @@ struct RecipeInteractionView: View {
     }
 }
 
+//Rotating Arrow
 struct ArrowShape: Shape {
     let reachedTop: Bool
     let reachedBottom: Bool

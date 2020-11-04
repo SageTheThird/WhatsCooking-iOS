@@ -10,10 +10,13 @@ import Foundation
 
 import SwiftUI
 
-struct RecipeDetailView: View {
+struct FeedsDetailView: View {
     @ObservedObject var manager: RecipeManager
     @State var isIngredient = true
     public var viewSpace: Namespace.ID
+    
+    var cameFromExplore: Bool = false
+    
     var body: some View {
         ZStack {
             
@@ -21,48 +24,34 @@ struct RecipeDetailView: View {
             Color.lightBackground
                 .ignoresSafeArea()
                 .transition(.move(edge: .bottom))
-        
-//            if manager.currentRecipeIndex % 2 == 0 {
-//                Color.lightBackground
-//                    .ignoresSafeArea()
-//                    .transition(.move(edge: .bottom))
-//            } else {
-//                Color.darkBackground
-//                    .ignoresSafeArea()
-//                    .transition(.move(edge: .bottom))
-//            }
             
             ScrollView(.vertical, showsIndicators: true) {
                 VStack(alignment: .leading) {
                     // recipe image view
                     RecipeInteractionView(recipeLocal: manager.selectedRecipe ?? manager.mainViewModel.recipesLocal[0], index: manager.currentRecipeIndex, count: manager.mainViewModel.recipesLocal.count, manager: manager, viewSpace: viewSpace)
-//                        .rotationEffect(.degrees(90))
                         .offset(y : -80)
                     Group {
                         // title
                         Text(manager.selectedRecipe?.strMeal ?? "?")
                             .font(.system(size: 24, weight: .bold))
-//                            .foregroundColor(manager.currentRecipeIndex%2 == 0 ? .black : .white)
                             .foregroundColor(.black)
                         // info view
                         HStack(spacing: 32) {
                             HStack(spacing: 12) {
-                                Image(systemName: DataOld.summeryImageName["time"] ?? "?")
-                                    .foregroundColor(.green)
+                                Image(systemName: manager.getCurrentRecipe().cookingInfo.timeImage)
+                                    .foregroundColor(.red)
                                 //summary[time will take]
                                 Text("\(manager.selectedRecipe?.cookingInfo.time ?? "32" ) mins" )
                                     
                             }
                             
                             HStack(spacing: 12) {
-                                Image(systemName: DataOld.summeryImageName["ingredientCount"] ?? "?")
-                                    .foregroundColor(.green)
-                                //summary[ingredients count]
+                                Image(systemName: manager.getCurrentRecipe().cookingInfo.ingredientCountImage)
+                                    .foregroundColor(.red)
                                 Text("\(manager.selectedRecipe?.cookingInfo.ingredientCount ?? "7") Ingredients" )
                                     
                             }
                         }
-//                        .foregroundColor(manager.currentRecipeIndex%2 == 0 ? .black : .white)
                         .foregroundColor(.black)
                         .padding(.vertical)
                     }
@@ -71,26 +60,27 @@ struct RecipeDetailView: View {
                     // ingredient/step toggle view
                     Toggle(isOn: $isIngredient, label: {})
                         .toggleStyle(IngredientMethodToggleStyle())
-//                        .foregroundColor(manager.currentRecipeIndex%2 == 0 ? .black : .white)
                         .foregroundColor(.black)
                     
                     if isIngredient {
                         // ingredient list
-                        IngredientListView(manager: manager)
+                        IngredientListView(ingredients: manager.selectedRecipe?.ingredients ?? [IngredientsLocal(ingredient: "Ingredients", measure: "Missing", isAvailable: false)])
                     } else {
                         // steps list
                         
                         
                         MethodListView(methods: manager.selectedRecipe?.strInstructions ?? ["Instructions Missing"])
-//                            .foregroundColor(manager.currentRecipeIndex%2 == 0 ? .black : .white)
                             .foregroundColor(.black)
                     }
                 }
             }
+            
+            if !cameFromExplore{
+                BackButtonView(manager: manager)
+                    .foregroundColor(.black)
+            }
            
-            BackButtonView(manager: manager)
-//                .foregroundColor(manager.currentRecipeIndex%2 == 0 ? .black : .white)
-                .foregroundColor(.black)
+            
         }
     }
 }
@@ -156,7 +146,7 @@ struct IngredientMethodToggleStyle: ToggleStyle {
                         .frame(height: 3)
                     
                     Rectangle()
-                        .fill(Color.green)
+                        .fill(Color.red)
                         .frame(width: configuration.isOn ? 110 : 70, height: 3)//110 : 70
                         .offset(x: configuration.isOn ? 16 : 140)//0 : 115
                 }
@@ -165,15 +155,16 @@ struct IngredientMethodToggleStyle: ToggleStyle {
 }
 
 struct IngredientListView: View {
-    @ObservedObject var manager: RecipeManager
+//    @ObservedObject var manager: RecipeManager
+    @State var ingredients: [IngredientsLocal]
     var body: some View {
-        ForEach(0..<manager.getCurrentRecipe().ingredients.count) { i in
+        ForEach(0..<ingredients.count) { i in
             Toggle(isOn: Binding<Bool>(
-                get: { manager.mainViewModel.recipesLocal[manager.currentRecipeIndex].ingredients[i].isAvailable },
-                set: { manager.mainViewModel.recipesLocal[manager.currentRecipeIndex].ingredients[i].isAvailable = $0 }
+                get: { ingredients[i].isAvailable },
+                set: { self.ingredients[i].isAvailable = $0 }
             ),
                    label: {
-                    Text("\(manager.getCurrentRecipe().ingredients[i].measure) \(manager.getCurrentRecipe().ingredients[i].ingredient)")
+                    Text("\(ingredients[i].measure) \(ingredients[i].ingredient)")
 //                        .foregroundColor(manager.currentRecipeIndex%2 == 0 ? .black : .white)
                         .foregroundColor(.black)
             })
@@ -189,12 +180,12 @@ struct CircularToggleStyle: ToggleStyle {
             HStack(alignment: .top) {
                 ZStack {
                     Circle()
-                        .stroke(configuration.isOn ? Color.green : Color.gray.opacity(0.5), lineWidth: 2)
+                        .stroke(configuration.isOn ? Color.red : Color.gray.opacity(0.5), lineWidth: 2)
                         .frame(width: 20, height: 20)
                     
                     if configuration.isOn {
                         Circle()
-                            .fill(Color.green)
+                            .fill(Color.red)
                             .frame(width: 10, height: 10)
                     }
                 }
@@ -214,6 +205,7 @@ struct MethodListView: View {
     var body: some View {
         ForEach(methods, id: \.self) { value in
             Text("\u{2022} \(value)")
+                .fontWeight(.bold)
                 .padding(.horizontal)
                 .padding(.vertical, 4)
         }
