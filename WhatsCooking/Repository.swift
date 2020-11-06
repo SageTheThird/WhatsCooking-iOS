@@ -25,7 +25,7 @@ class Repository{
     
     let headers : HTTPHeaders = [
         "x-rapidapi-host": "themealdb.p.rapidapi.com",
-        "x-rapidapi-key": "get-your-own-key-from-rapid-api"
+        "x-rapidapi-key": "put-your-key-from-rapid-api-for-TheMealDB-here"
     ]
     
 
