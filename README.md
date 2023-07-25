@@ -1,8 +1,6 @@
 # WhatsCooking-iOS
 
 
-![Demo Video](https://raw.githubusercontent.com/Kurtz0420/WhatsCooking-iOS/stable/imgs/WhatsCookingDemoEdited5.gif)
-
 
 ![WhatsCooking Logo](https://opengraph.githubassets.com/3b54907c47fa5c10891db7a9fa18e1e95719ff4b1382345ac4edfb16ff4a81c1/SageTheThird/WhatsCooking-iOS)
 
@@ -29,6 +27,8 @@
    ```
 
 3. Open the project in Xcode and run it on your preferred simulator or real device.
+
+![Demo Video](https://raw.githubusercontent.com/Kurtz0420/WhatsCooking-iOS/stable/imgs/WhatsCookingDemoEdited5.gif)
 
 
 <img src="https://raw.githubusercontent.com/Kurtz0420/WhatsCooking-iOS/stable/imgs/WhatsCooking1.png?raw=true" />
